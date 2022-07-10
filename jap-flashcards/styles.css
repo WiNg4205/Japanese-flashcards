@@ -1,0 +1,15 @@
+#res3 {
+    color: black;
+    font-size: 64px;
+    font-weight: bold;
+    background-color: rgb(173, 64, 64);
+    text-align: center;
+}
+
+#res, #res2 {
+    background-color: lightgray;
+    border: solid;
+    height: 48px;
+    text-align: center;
+    font-size: 20px;
+}
