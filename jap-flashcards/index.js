@@ -490,6 +490,15 @@ function draft(l1, l2, l3, l4, l5, l6) {
     }
 }
 
+function pitch(word) {
+    var positions = [];
+    for (let i = 0; i < word.length; i++) {
+        if (word[i] === '.') positions.push(i - positions.length);
+        
+    }
+    return positions;
+}
+
 document.getElementById('btns').onclick = function() {
     
     if (create) {
@@ -503,8 +512,29 @@ document.getElementById('btns').onclick = function() {
     } else New = true;
 
     if (language === 0) {
-        document.getElementById('res').innerHTML = vocab[item][0].replaceAll('.','');
-        document.getElementById('res2').innerHTML = ''
+        //var word = vocab[item][0].replaceAll('.','')
+        var word = vocab[item][0];
+        positions = pitch(word);
+        console.log(positions);
+        if (positions.length > 0) {
+            word = word.replaceAll('.','')
+            start = positions[0];
+            end = positions[1];
+            word = word.substring(0,start) + "<span class='highlight'>" + word.substring(start,end) + "</span>" + word.substring(end,word.length);
+        }
+
+        /*if (positions.length === 4) {
+            word = word.replaceAll('.','')
+            start = positions[0];
+            end = positions[1];
+            start2 = positions[2];
+            end2 = positions[3];
+            word = word.substring(0,start) + "<span class='highlight'>" + word.substring(start,end) + "</span>" + word.substring(end,start2);
+            word = word + ("<span class='highlight'>" + word.substring(start2,end2) + "</span>") + word.substring(end2,word.length);
+        } */
+        
+        document.getElementById('res').innerHTML = word;
+        document.getElementById('res2').innerHTML = '';
         language = 1;
     } else {
         document.getElementById('res2').innerHTML = vocab[item][1];
