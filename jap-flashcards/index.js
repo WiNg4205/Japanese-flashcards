@@ -129,7 +129,7 @@ vocab = [
     ['ア.ジアけ.んきゅう', 'Asian studies'],
     ['.け.いざい', 'economics'],
     ['.こ.うがく', 'engineering'],
-    ['え.いご.', 'English [language]'],
+    ['え.いご.', 'English (language)'],
     ['こ.くさいか.んけい', 'international relations'],
     ['コ.ンピュ.ーター', 'computer'],
     ['せ.いじ.', 'politics'],
@@ -156,11 +156,11 @@ vocab = [
     //L2main
     ['こ.れ.', 'this one'],
     ['そ.れ.', 'that one'],
-    ['あ.れ.', 'that one [over there]'],
+    ['あ.れ.', 'that one (over there)'],
     ['.ど.れ', 'which one'],
     ['こ.の.', 'this...'],
     ['そ.の.', 'that...'],
-    ['あ.の.', 'that...[over there]'],
+    ['あ.の.', 'that...(over there)'],
     ['.ど.の', 'which...'],
     ['こ.こ.', 'here'],
     ['そ.こ.', 'there'],
@@ -198,9 +198,9 @@ vocab = [
     ['~.え.ん', '...yen'],
     ['た.か.い', 'expensive; high'],
     //L2expressions
-    ['い.らっしゃいま.せ', 'Welcome [to our store]'],
-    ['[~を]お.ねがいしま.す', '..., please'],
-    ['[~を]く.ださ.い', 'Please give me...'],
+    ['い.らっしゃいま.せ', 'Welcome (to our store)'],
+    ['(~を)お.ねがいしま.す', '..., please'],
+    ['(~を)く.ださ.い', 'Please give me...'],
     ['.じゃ.あ', 'then...; if that is the case, ...'],
     ['.ど.うぞ', 'Please.; Here it is.'],
     ['.ど.うも', 'Thank you.'],
@@ -285,7 +285,7 @@ vocab = [
     ['つ.くえ.', 'desk'],
     ['しゃ.しん.', 'picture; photograph'],
     ['は.な.', 'flower'],
-    ['レ.ポー.ト', '[term] paper'],
+    ['レ.ポー.ト', '(term) paper'],
     ['.ご.はん', 'rice; meal'],
     ['.パ.ン', 'bread'],
     //L4places
@@ -555,7 +555,6 @@ document.getElementById('btns1').onclick = function() {
 }
 
 document.getElementById('btns2').onclick = function() {
-    create = true;
     create = true;
     if (l2) {
         document.getElementById('btns2').innerHTML = 'L2';
