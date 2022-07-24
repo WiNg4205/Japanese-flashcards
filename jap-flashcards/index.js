@@ -332,7 +332,7 @@ vocab = [
     //L5nouns
     ['た.べ.もの', 'food'],
     ['の.み.もの', 'drink'],
-    ['く.だ.みの', 'fruit'],
+    ['く.だ.もの', 'fruit'],
     ['や.すみ.', 'holiday; day off; abscence'],
     ['りょ.こう.', 'travel'],
     ['.う.み', 'sea'],
@@ -499,19 +499,8 @@ function pitch(word) {
     return positions;
 }
 
-document.getElementById('btns').onclick = function() {
-    
-    if (create) {
-        draft(l1, l2, l3, l4, l5, l6);
-        create = false;
-    } 
-    console.log(items);
-    if (New) {
-        item = items[Math.floor(Math.random()*items.length)];
-        New = false;
-    } else New = true;
-
-    if (language === 0) {
+function vword(lan) {
+    if (lan == 0) {
         //var word = vocab[item][0].replaceAll('.','')
         var word = vocab[item][0];
         positions = pitch(word);
@@ -521,6 +510,7 @@ document.getElementById('btns').onclick = function() {
             start = positions[0];
             end = positions[1];
             word = word.substring(0,start) + "<span class='highlight'>" + word.substring(start,end) + "</span>" + word.substring(end,word.length);
+            return word;
         }
 
         /*if (positions.length === 4) {
@@ -533,12 +523,50 @@ document.getElementById('btns').onclick = function() {
             word = word + ("<span class='highlight'>" + word.substring(start2,end2) + "</span>") + word.substring(end2,word.length);
         } */
         
+    } else {
+        return vocab[item][1];
+    }
+}
+
+document.getElementById('btn').onclick = function() {
+    order = 0;
+    New = true;
+    if (language == 0) {
+        document.getElementById('btn').innerHTML = 'Eng->Jap';
+    } else {
+        document.getElementById('btn').innerHTML = 'Jap->Eng';
+    }
+
+    if (language == 0) language = 1;
+    else language = 0;   
+    document.getElementById('res').innerHTML = '';
+    document.getElementById('res2').innerHTML = '';
+}
+
+document.getElementById('btns').onclick = function() {  
+    if (create) {
+        draft(l1, l2, l3, l4, l5, l6);
+        create = false;
+    } 
+    console.log(items);
+    if (New) {
+        item = items[Math.floor(Math.random()*items.length)];
+        New = false;
+    } else New = true;
+
+    var word;
+    word = vword(language);
+    if (language == 0) language = 1;
+    else language = 0;    
+    console.log(word, New, language)
+
+
+    if (!New) {
         document.getElementById('res').innerHTML = word;
         document.getElementById('res2').innerHTML = '';
-        language = 1;
     } else {
-        document.getElementById('res2').innerHTML = vocab[item][1];
-        language = 0;
+        document.getElementById('res2').innerHTML = word;
+
     }
 }
 
