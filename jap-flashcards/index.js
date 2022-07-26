@@ -27,6 +27,7 @@ var l3 = true;
 var l4 = true;
 var l5 = true;
 var l6 = true;
+var l7 = true;
 
 // Additional: days, numbers, time
 key = {
@@ -74,7 +75,9 @@ key = {
     'L6main': [274,290],
     'L6adjectives': [291,291],
     'L6verbs': [292,315],
-    'L6adverbs+expressions': [316,320]
+    'L6adverbs+expressions': [316,320],
+    //Kanji
+    'Kanji': [321,326]
 }
 
 vocab = [
@@ -371,7 +374,7 @@ vocab = [
     ['.げ.んき(な)', 'healthy; energetic'],
     ['.し.ずか(な)', 'quiet'],
     ['に.ぎ.やか(な)', 'lively'],
-    ['ひ.き(な).', 'not busy; free (time)'],
+    ['ひ.ま(な).', 'not busy; free (time)'],
     //L5verbs
     ['お.よ.ぐ / お.よぎま.す', 'to swim'],
     ['き.く. / き.きま.す', 'to ask (person に)'],
@@ -437,9 +440,25 @@ vocab = [
     ['ゆ.っく.ゆっくり', 'slowly; leisurely; unhurriedly'],
     ['.け.っこうです', "That would be fine; That wouldn't be necessary"],
     ['ほ.んとうで.すか', 'Really?'],
+    //Kanji
+    ['日','日本(にほん), 日曜日(にちようび)'],
+    ['本','本(ほん), 日本(にほん)'],
+    ['人','日本人(にほんじん), 一人で(ひとりで)'],
+    ['月','月曜日(げつようび), 一月(いちがつ)'],
+    ['火','火曜日(かようび)'],
+    ['水','水曜日(すいようび), 水(みず)'],
+    ['',''],
+    ['',''],
+    ['',''],
+    ['',''],
+    ['',''],
+    ['',''],
+    ['',''],
+    ['',''],
+    ['',''],
 ]
 
-function draft(l1, l2, l3, l4, l5, l6) {
+function draft(l1, l2, l3, l4, l5, l6, l7) {
     items = []
     if (l1) {
         let start = key['L1'][0];
@@ -488,6 +507,14 @@ function draft(l1, l2, l3, l4, l5, l6) {
             items.push(i)
         }
     }
+
+    if (l7) {
+        let start = key['Kanji'][0];
+        let end = key['Kanji'][1];
+        for (let i = start; i <= end; i++) {
+            items.push(i)
+        }
+    }
 }
 
 function pitch(word) {
@@ -510,9 +537,9 @@ function vword(lan) {
             start = positions[0];
             end = positions[1];
             word = word.substring(0,start) + "<span class='highlight'>" + word.substring(start,end) + "</span>" + word.substring(end,word.length);
-            return word;
+            
         }
-
+        return word;
         /*if (positions.length === 4) {
             word = word.replaceAll('.','')
             start = positions[0];
@@ -526,6 +553,7 @@ function vword(lan) {
     } else {
         return vocab[item][1];
     }
+    console.log(123);
 }
 
 document.getElementById('btn').onclick = function() {
@@ -545,7 +573,7 @@ document.getElementById('btn').onclick = function() {
 
 document.getElementById('btns').onclick = function() {  
     if (create) {
-        draft(l1, l2, l3, l4, l5, l6);
+        draft(l1, l2, l3, l4, l5, l6, l7);
         create = false;
     } 
     console.log(items);
@@ -556,9 +584,10 @@ document.getElementById('btns').onclick = function() {
 
     var word;
     word = vword(language);
+    console.log(word);
     if (language == 0) language = 1;
     else language = 0;    
-    console.log(word, New, language)
+    console.log(word, New, language);
 
 
     if (!New) {
@@ -634,5 +663,16 @@ document.getElementById('btns6').onclick = function() {
     } else {
         document.getElementById('btns6').innerHTML = 'L6✓';
         l6 = true;
+    }
+}
+
+document.getElementById('btns7').onclick = function() {
+    create = true;
+    if (l7) {
+        document.getElementById('btns7').innerHTML = 'Kanji';
+        l7 = false;
+    } else {
+        document.getElementById('btns7').innerHTML = 'Kanji✓';
+        l7 = true;
     }
 }
